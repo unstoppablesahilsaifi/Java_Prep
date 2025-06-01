@@ -191,6 +191,8 @@ Interfaces do not have constructors.
 
 
 ############################################################################################################################################
+############################################################################################################################################
+############################################################################################################################################
 
 
 2. Java – String Class and Methods with examples
@@ -270,3 +272,159 @@ s3 == s4 : DIFFERENT reference
 s3.equals(s4) : SAME content
 s1 == s3 : DIFFERENT reference
 s1.equals(s3) : SAME content
+  
+############################################################################################################################################
+############################################################################################################################################
+############################################################################################################################################
+
+3. Inheritance in Java
+  IS a relationship.
+  
+=>Single Inheritance
+In Single inheritance, a single child class inherits the properties and methods of a single parent class.
+
+// Parent class
+class Animal {
+    void eat() {
+        System.out.println("Animal is eating...");
+    }
+}
+
+// Child class
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog is barking...");
+    }
+}
+
+// Main class
+public class Test {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.eat();   // inherited from Animal
+        d.bark();  // from Dog class
+    }
+}
+
+## 🔍 Output:
+
+Animal is eating...
+Dog is barking...
+
+## ✅ What is **Multilevel Inheritance**?
+
+> When a class inherits from a class, and **that class also inherits from another class**, it's called **multilevel inheritance**.
+
+// Base class
+class Animal {
+    void eat() {
+        System.out.println("Animal is eating...");
+    }
+}
+
+// Derived from Animal
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog is barking...");
+    }
+}
+
+// Derived from Dog
+class Puppy extends Dog {
+    void weep() {
+        System.out.println("Puppy is weeping...");
+    }
+}
+
+// Main class
+public class Test {
+    public static void main(String[] args) {
+        Puppy p = new Puppy();
+
+        // Methods from all three classes
+        p.eat();   // From Animal
+        p.bark();  // From Dog
+        p.weep();  // From Puppy
+    }
+}
+
+
+## 🔍 Output:
+
+Animal is eating...
+Dog is barking...
+Puppy is weeping...
+```
+
+> **Multiple inheritance** means a class **inherits from more than one parent class**.
+
+class A {
+    void show() {
+        System.out.println("Class A");
+    }
+}
+
+class B {
+    void show() {
+        System.out.println("Class B");
+    }
+}
+
+// This is NOT allowed in Java:
+class C extends A, B {
+    // Now, which show() should it inherit?
+}
+```
+
+### ❓ Problem:
+
+If both `A` and `B` have a `show()` method, and `C` extends both:
+
+➡️ **Which `show()` method should Java use? A’s or B’s?**
+➡️ This is called the **diamond problem** — it causes **ambiguity**.
+
+================
+
+> Interface me bhi agar 2 interface me same method ho, to **confusion to wahan bhi hoga**, fir Java wahan kaise multiple inheritance allow karta hai?
+
+---
+
+## ✅ Java interface me confusion **nahi hota**, **kyunki**:
+
+* Interfaces me **sirf method signature** hota hai (bina body ke).
+* Jab class **implement karti hai multiple interfaces**, aur dono me same method ho:
+  ➤ Java **force karta hai** ki child class **khud override kare**.
+
+---
+
+## 🔥 Example: Same method in 2 interfaces
+
+```java
+interface A {
+    void show();
+}
+
+interface B {
+    void show();
+}
+
+// Class implements both
+class C implements A, B {
+    public void show() {
+        System.out.println("show() from class C");
+    }
+}
+```
+
+### 🧠 Java says:
+
+> "Acha bhai, A aur B dono me `show()` hai?
+> Toh tu khud bata `show()` kya karega — main nahi decide karunga."
+
+➡️ **No ambiguity**, because child class `C` **must** define `show()`.
+
+## ✅ Java's Rule:
+
+> "Agar 2 interfaces me **same default method** ho to tu **khud override kar**, warna main confuse ho jaunga."
+
+
