@@ -549,3 +549,59 @@ As you can see that we didn’t write the Address code in any of the three class
   we simply created the HAS-A relationship with the Address class to use the Address code. 
   The dot dot(…) part in the above code can be replaced with the public static void main method,
   the code in it would be similar to what we have seen in the first example.
+
+
+############################################################################################################################################
+############################################################################################################################################
+############################################################################################################################################
+
+  What is Association in java?
+  
+  Association is a process of establishing relationship between two separate classes through their objects. 
+  The relationship can be one to one, One to many, many to one and many to many.
+
+  class Author {
+    String name;
+
+    Author(String name) {
+        this.name = name;
+    }
+}
+
+class Book {
+    String title;
+    Author author;  // Book "knows" Author
+
+    Book(String title, Author author) {
+        this.title = title;
+        this.author = author;
+    }
+
+    void display() {
+        System.out.println("Book: " + title + ", Author: " + author.name);
+    }
+}
+🧪 Usage:
+java
+Copy
+Edit
+public class Main {
+    public static void main(String[] args) {
+        Author a = new Author("George Orwell");
+        Book b = new Book("1984", a);
+        b.display();
+    }
+}
+
+🔄 Types of Association:
+One-to-One
+A person has one passport.
+
+One-to-Many
+A teacher teaches many students.
+
+Many-to-One
+Many students belong to one department.
+
+Many-to-Many
+Students can enroll in many courses, and courses have many students.
