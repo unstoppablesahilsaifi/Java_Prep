@@ -761,3 +761,69 @@ class Subclass extends Parentclass
 Output:
 
 Parent class method
+
+############################################################################################################################################
+############################################################################################################################################
+############################################################################################################################################
+
+Method Overloading in Java
+
+Method Overloading is a feature that allows a class to have multiple methods with the same name but with different number, sequence or type of parameters.
+	
+Three ways to overload a method
+In order to overload a method, the parameter list of the methods must differ in either of these:
+1. Number of parameters.
+For example: This is a valid case of overloading
+
+add(int, int)
+add(int, int, int)
+	
+2. Data type of parameters.
+For example:
+
+add(int, int)
+add(int, float)
+	
+3. Sequence of Data type of parameters.
+For example:
+
+add(int, float)
+add(float, int)
+	
+Invalid case of method overloading:
+Parameters list doesn’t mean the return type of the method, for example if two methods have same name, same parameters and have different return type, then this is not a valid method overloading example. This will throw a compilation error.
+
+int add(int, int)
+float add(int, int)
+
+
+Example:
+
+class DisplayOverloading
+{
+  //adding two integer numbers
+  int add(int a, int b)
+  {
+    int sum = a+b;
+    return sum;
+  }
+  //adding three integer numbers
+  int add(int a, int b, int c)
+  {
+    int sum = a+b+c;
+    return sum;
+  }
+}
+class JavaExample
+{
+  public static void main(String args[])
+  {
+    DisplayOverloading obj = new DisplayOverloading();
+    System.out.println(obj.add(10, 20));
+    System.out.println(obj.add(10, 20, 30));
+  }
+}
+Output:
+
+30
+60
