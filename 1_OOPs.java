@@ -827,3 +827,78 @@ Output:
 
 30
 60
+
+**
+	
+### ✅ Yes, you **can overload the `main()` method** in Java!
+
+But there's a catch:
+
+---
+
+### 🔍 What Does "Overload main()" Mean?
+
+**Overloading** means having **multiple methods with the same name** but **different parameter lists**.
+
+So, you can write multiple `main()` methods like this:
+
+public class Main {
+
+    // Official main method — JVM looks for this
+    public static void main(String[] args) {
+        System.out.println("Main with String[] args");
+        main(10);  // Call overloaded method
+    }
+
+    // Overloaded main method with int
+    public static void main(int x) {
+        System.out.println("Overloaded main with int: " + x);
+    }
+
+    // Overloaded main method with no parameters
+    public static void main() {
+        System.out.println("Overloaded main with no arguments");
+    }
+}
+
+### 🖨️ **Output:**
+
+Main with String[] args
+Overloaded main with int: 10
+
+### ⚠️ Important:
+
+* The JVM **only calls** the standard `public static void main(String[] args)` as the **entry point**.
+* Other `main()` methods are **not called automatically** — you must **call them manually** from the main one.
+
+
+############################################################################################################################################
+############################################################################################################################################
+############################################################################################################################################
+
+Method overriding in java-
+	                  Declaring a method in sub class which is already present in parent class is known as method overriding.
+Example:
+class Human{
+   //Overridden method
+   public void eat()
+   {
+      System.out.println("Human is eating");
+   }
+}
+class Boy extends Human{
+   //Overriding method
+   public void eat(){
+      System.out.println("Boy is eating");
+   }
+   public static void main( String args[]) {
+      Boy obj = new Boy();
+      //This will call the child class version of eat()
+      obj.eat();
+   }
+}
+Output:
+
+Boy is eating
+
+	
