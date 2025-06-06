@@ -640,3 +640,124 @@ Students can enroll in many courses, and courses have many students.
 > **Aggregation** is a "has-a" with independence,
 > **Composition** is a "has-a" with dependency.
 
+
+  ############################################################################################################################################
+############################################################################################################################################
+############################################################################################################################################
+
+** Super keyword in java-
+                        The super keyword refers to the objects of immediate parent class.
+  The use of super keyword
+1) To access the data members of parent class when both parent and child class have member with same name
+2) To explicitly call the no-arg and parameterized constructor of parent class
+3) To access the method of parent class when child class has overridden that method.
+
+  Example to use Super keyword to access the variables of parent class
+
+  class Superclass
+{
+   int num = 100;
+}
+class Subclass extends Superclass
+{
+   int num = 110;
+   void printNumber(){
+	/* Note that instead of writing num we are
+	 * writing super.num in the print statement
+	 * this refers to the num variable of Superclass
+	 */
+	System.out.println(super.num);
+   }
+   public static void main(String args[]){
+	Subclass obj= new Subclass();
+	obj.printNumber();	
+   }
+}
+Output:
+100
+
+  2) Use of super keyword to invoke constructor of parent class
+
+// Parent class
+class Animal {
+    Animal() {
+        System.out.println("Animal constructor called");
+    }
+}
+
+// Child class
+class Dog extends Animal {
+    Dog() {
+        super();  // Calls parent class constructor
+        System.out.println("Dog constructor called");
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog();  // Creating object of Dog
+    }
+}
+🖨️ Output:
+
+Animal constructor called
+Dog constructor called
+
+  3) How to use super keyword in case of method overriding
+
+class Parentclass
+{
+   //Overridden method
+   void display(){
+	System.out.println("Parent class method");
+   }
+}
+class Subclass extends Parentclass
+{
+   //Overriding method
+   void display(){
+	System.out.println("Child class method");
+   }
+   void printMsg(){
+	//This would call Overriding method
+	display();
+	//This would call Overridden method
+	super.display();
+   }
+   public static void main(String args[]){		
+	Subclass obj= new Subclass();
+	obj.printMsg(); 
+   }
+}
+Output:
+
+Child class method
+Parent class method
+  
+What if the child class is not overriding any method: No need of super
+  
+class Parentclass
+{
+   void display(){
+	System.out.println("Parent class method");
+   }
+}
+class Subclass extends Parentclass
+{
+   void printMsg(){
+	/* This would call method of parent class,
+	 * no need to use super keyword because no other
+	 * method with the same name is present in this class
+	 */
+	display();
+   } 
+   public static void main(String args[]){
+		
+	Subclass obj= new Subclass();
+        obj.printMsg(); 
+   }
+}
+Output:
+
+Parent class method
