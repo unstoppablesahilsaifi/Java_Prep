@@ -605,3 +605,38 @@ Many students belong to one department.
 
 Many-to-Many
 Students can enroll in many courses, and courses have many students.
+
+  Here’s a **short and crisp comparison** of **Association vs Aggregation vs Composition** — perfect for interviews:
+
+---
+
+### 🔄 **1. Association**
+
+* **Definition**: A general relationship where one class uses or interacts with another.
+* **Example**: Student ↔ Teacher (they know each other).
+* **Key Point**: No ownership, both can exist independently.
+
+---
+
+### 🧩 **2. Aggregation (Has-A, Weak)**
+
+* **Definition**: A special type of association with partial ownership.
+* **Example**: Library → Books (books can exist without the library).
+* **Key Point**: "Has-a" relationship; child can live without parent.
+
+---
+
+### 🧱 **3. Composition (Has-A, Strong)**
+
+* **Definition**: Strong ownership; the child object's life depends on the parent.
+* **Example**: House → Rooms (if the house is destroyed, rooms go too).
+* **Key Point**: "Part-of" relationship; child **cannot** live without parent.
+
+---
+
+### ✅ **One-Liner Summary:**
+
+> **Association** is a broad connection,
+> **Aggregation** is a "has-a" with independence,
+> **Composition** is a "has-a" with dependency.
+
