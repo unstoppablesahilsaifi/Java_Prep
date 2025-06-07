@@ -965,5 +965,135 @@ i:Beginnersbook
 i:100
 i:Beginnersbook
 	
+
+############################################################################################################################################
+############################################################################################################################################
+############################################################################################################################################
+
+Abstract Class in Java-
+	               A class that is declared using “abstract” keyword is known as abstract class. 
+	               It can have abstract methods(methods without body) as well as concrete methods (regular methods with body).
+												       
+Why we need an abstract class?
+Lets say we have a class Animal that has a method sound() and the subclasses(see inheritance) of it like Dog, Lion, Horse, Cat etc. 
+Since the animal sound differs from one animal to another, there is no point to implement this method in parent class.
+This is because every child class must override this method to give its own implementation details, like Lion class will say “Roar” in this method and Dog class will say “Woof”.
+So when we know that all the animal child classes will and should override this method, then there is no point to implement this method in parent class. 
+Thus, making this method abstract would be the good choice as by making this method abstract we force all the sub classes to implement this method( otherwise you will get compilation error), 
+also we need not to give any implementation to this method in parent class.
+
+Note: Abstract class cannot be instantiated which means you cannot create the object of it. 
+      To use this class, you need to create another class that extends this this class and provides the implementation of abstract methods.
+
+** Why can’t we create the object of an abstract class?
+Because these classes are incomplete, they have abstract methods that have no body so if java allows you to create object of this class then if someone calls the abstract method using that object then What would happen?There would be no actual implementation of the method to invoke.
+Also because an object is concrete. An abstract class is like a template, so you have to extend it and build on it before you can use it.
 	
+Great question! Here's a **clear and simple explanation**:
+
+---
+
+## ❓ **Why can't we create an object of an abstract class in Java?**
+
+### 🔒 **Answer:**
+
+We **can’t create an object** of an abstract class because **it may have incomplete methods** (called **abstract methods**) — and Java doesn't know how to implement them.
+
+---
+
+### 📖 **What is an Abstract Class?**
+
+* A class declared with the keyword `abstract`.
+* Can have **abstract methods** (methods without a body).
+* Can also have **non-abstract methods** (with body).
+* Acts as a **base (blueprint)** for other classes to inherit from.
+
+```java
+abstract class Animal {
+    abstract void sound();  // No implementation
+}
+```
+
+---
+
+### 🚫 **Why Object Creation Is Not Allowed?**
+
+If you try this:
+
+```java
+Animal a = new Animal();  // ❌ Error
+```
+
+You’ll get a **compile-time error** because:
+
+* `Animal` has **no full implementation**.
+* Java doesn’t know **what `sound()` actually does**.
+
+---
+
+### ✅ **What You Can Do Instead:**
+
+You can **create an object of a subclass** that provides **complete implementation**:
+
+```java
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Bark");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Dog();  // ✅ Allowed (polymorphism)
+        a.sound();             // Output: Bark
+    }
+}
+```
+
+---
+
+### 💡 **Think of it like this:**
+
+> An abstract class is like an **incomplete blueprint**.
+> You can’t build a house from an incomplete blueprint,
+> but you **can extend it into a complete one** and build from that.
+
+**
+	Example 1: abstract method in an abstract class
+//abstract class
+abstract class Sum{
+   /* These two are abstract methods, the child class
+    * must implement these methods
+    */
+   public abstract int sumOfTwo(int n1, int n2);
+   public abstract int sumOfThree(int n1, int n2, int n3);
 	
+   //Regular method 
+   public void disp(){
+	System.out.println("Method of class Sum");
+   }
+}
+//Regular class extends abstract class
+class Demo extends Sum{
+
+   /* If I don't provide the implementation of these two methods, the
+    * program will throw compilation error.
+    */
+   public int sumOfTwo(int num1, int num2){
+	return num1+num2;
+   }
+   public int sumOfThree(int num1, int num2, int num3){
+	return num1+num2+num3;
+   }
+   public static void main(String args[]){
+	Sum obj = new Demo();
+	System.out.println(obj.sumOfTwo(3, 7));
+	System.out.println(obj.sumOfThree(4, 3, 19));
+	obj.disp();
+   }
+}
+Output:
+
+10
+26
+Method of class Sum
