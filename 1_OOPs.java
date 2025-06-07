@@ -901,4 +901,69 @@ Output:
 
 Boy is eating
 
+############################################################################################################################################
+############################################################################################################################################
+############################################################################################################################################
+
+Java – Static Class, Block, Methods and Variables-
+	                                          Static members belong to the class instead of a specific instance, 
+	                                        this means if you make a member static, you can access it without object.
+Example 1:
+	class SimpleStaticExample
+{
+    // This is a static method
+    static void myMethod()
+    {
+        System.out.println("myMethod");
+    }
+ 
+    public static void main(String[] args)
+    {
+          /* You can see that we are calling this
+           * method without creating any object. 
+           */
+           myMethod();
+    }
+}
+Output:
+
+myMethod
+
+Example 2:
+	Example 2: Static method accessed directly in static and non-static method
+class JavaExample{
+  static int i = 100;
+  static String s = "Beginnersbook";
+  //Static method
+  static void display()
+  {
+     System.out.println("i:"+i);
+     System.out.println("i:"+s);
+  }
+
+  //non-static method
+  void funcn()
+  {
+      //Static method called in non-static method
+      display();
+  }
+  //static method
+  public static void main(String args[])
+  {
+	  JavaExample obj = new JavaExample();
+	  //You need to have object to call this non-static method
+	  obj.funcn();
+	  
+      //Static method called in another static method
+      display();
+   }
+}
+Output:
+
+i:100
+i:Beginnersbook
+i:100
+i:Beginnersbook
+	
+	
 	
