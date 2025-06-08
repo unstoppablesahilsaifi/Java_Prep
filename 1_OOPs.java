@@ -1193,3 +1193,71 @@ default	        Same package ke andar visible
 protected	Same package + subclasses outside package
 public	        Har jagah accessible (world-wide)
 
+############################################################################################################################################
+############################################################################################################################################
+############################################################################################################################################
+
+Garbage Collection in Java
+
+When JVM starts up, it creates a heap area which is known as runtime data area. 
+This is where all the objects (instances of class) are stored. Since this area is limited, 
+it is required to manage this area efficiently by removing the objects that are no longer in use. 
+The process of removing unused objects from heap memory is known as Garbage collection and this is a part of memory management in Java.
+
+Sure! Here's a **simple and interview-ready explanation** of **Garbage Collection in Java**:
+
+---
+
+## ♻️ **Garbage Collection in Java – Explained Simply**
+
+### ✅ **What is Garbage Collection?**
+
+> **Garbage Collection (GC)** in Java is the process of **automatically freeing up memory** by **removing objects** that are **no longer used or referenced**.
+
+It helps **prevent memory leaks** and keeps your program efficient.
+
+---
+
+### 🔍 **How it Works:**
+
+* Java has an automatic garbage collector (part of the JVM).
+* It runs in the background and removes **unreachable objects**.
+* No need for manual memory management like in C/C++.
+ **Example:**
+
+class Test {
+    public static void main(String[] args) {
+        Test t = new Test();  // Object created
+        t = null;             // Now unreachable
+        System.gc();          // Suggest GC to run
+    }
+
+    // Finalizer (called before GC removes the object)
+    protected void finalize() {
+        System.out.println("Object is being garbage collected");
+    }
+}
+
+
+| Method        | Use                                               |
+| ------------- | ------------------------------------------------- |
+| `System.gc()` | Suggest JVM to run GC                             |
+| `finalize()`  | Called before object is deleted (rarely used now) |
+
+
+
+* GC is **automatic**, but you can suggest it via `System.gc()`.
+* `finalize()` is now **deprecated** (from Java 9+).
+* GC uses algorithms like **Mark and Sweep**, **Generational GC**, etc.
+* **You can’t predict exactly when GC will run.**
+
+**
+
+> "Garbage Collection in Java automatically deletes unreachable objects to free memory, helping manage resources without manual cleanup."
+🧠 Bonus Tip for Interviews:
+
+> Java's memory is divided into:
+
+* **Heap** → where objects are stored (GC runs here)
+* **Stack** → method calls, local variables (managed by JVM, not GC)
+
