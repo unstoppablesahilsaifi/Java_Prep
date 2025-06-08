@@ -1097,3 +1097,99 @@ Output:
 10
 26
 Method of class Sum
+
+
+############################################################################################################################################
+############################################################################################################################################
+############################################################################################################################################
+
+What is an interface in Java?
+Interface looks like a class but it is not a class. 
+An interface can have methods and variables just like the class but the methods declared in interface are by default abstract (only method signature, no body, see: Java abstract method). 
+Also, the variables declared in an interface are public, static & final by default.
+
+Example:
+interface MyInterface
+{
+   /* compiler will treat them as: 
+    * public abstract void method1();
+    * public abstract void method2();
+    */
+   public void method1();
+   public void method2();
+}
+class Demo implements MyInterface
+{
+   /* This class must have to implement both the abstract methods
+    * else you will get compilation error
+    */
+   public void method1()
+   {
+	System.out.println("implementation of method1");
+   }
+   public void method2()
+   {
+	System.out.println("implementation of method2");
+   }
+   public static void main(String arg[])
+   {
+	MyInterface obj = new Demo();
+	obj.method1();
+   }
+}
+Output:
+
+implementation of method1
+
+** Multiple Inheritence->
+
+	interface X
+{
+   public void myMethod();
+}
+interface Y
+{
+   public void myMethod();
+}
+class JavaExample implements X, Y
+{
+   public void myMethod()
+   {
+       System.out.println("Implementing more than one interfaces");
+   }
+   public static void main(String args[]){
+	   JavaExample obj = new JavaExample();
+	   obj.myMethod();
+   }
+}
+Output:
+
+Implementing more than one interfaces
+
+############################################################################################################################################
+############################################################################################################################################
+############################################################################################################################################
+Encapsulation in Java
+-> Encapsulation is also known as “data Hiding“
+
+############################################################################################################################################
+############################################################################################################################################
+############################################################################################################################################
+
+1. Default access modifier-> The scope of this modifier is limited to the package only.
+2. Private access modifier
+The scope of private modifier is limited to the class only.
+
+Private Data members and methods are only accessible within the class
+Class and Interface cannot be declared as private
+If a class has private constructor then you cannot create the object of that class from outside of the class.
+
+3. Protected
+The protected access modifier allows access within the same package and also in subclasses outside the package.
+
+Modifier	Access Level
+private	        Sirf same class ke andar visible
+default	        Same package ke andar visible
+protected	Same package + subclasses outside package
+public	        Har jagah accessible (world-wide)
+
