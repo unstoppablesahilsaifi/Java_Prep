@@ -263,3 +263,5 @@ if (age < 12) {
 
 > "`throw` is used to raise an exception intentionally. It gives better control over program flow and proper error handling, while `System.out.println()` is only for displaying messages."
 
+*****************************************************************************************************************************************
+
