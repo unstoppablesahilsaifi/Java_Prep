@@ -32,4 +32,148 @@ Runtime Exceptions are also known as Unchecked Exceptions. These exceptions are 
 
 For example, ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException etc. The examples that we seen above were unchecked exceptions.
 
-  
+
+*****************************************************************************************************************************************
+
+Try Catch in Java – Exception handling
+
+class Example1 {
+   public static void main(String args[]) {
+      int num1, num2;
+      try {
+         /* We suspect that this block of statement can throw 
+          * exception so we handled it by placing these statements
+          * inside try and handled the exception in catch block
+          */
+         num1 = 0;
+         num2 = 62 / num1;
+         System.out.println(num2);
+         System.out.println("Hey I'm at the end of try block");
+      }
+      catch (ArithmeticException e) { 
+         /* This block will only execute if any Arithmetic exception 
+          * occurs in try block
+          */
+         System.out.println("You should not divide a number by zero");
+      }
+      catch (Exception e) {
+         /* This is a generic Exception handler which means it can handle
+          * all the exceptions. This will execute if the exception is not
+          * handled by previous catch blocks.
+          */
+         System.out.println("Exception occurred");
+      }
+      System.out.println("I'm out of try-catch block in Java.");
+   }
+}
+Output:
+
+You should not divide a number by zero
+I'm out of try-catch block in Java.
+
+Example of Multiple catch blocks
+class Example2{
+   public static void main(String args[]){
+     try{
+         int a[]=new int[7];
+         a[4]=30/0;
+         System.out.println("First print statement in try block");
+     }
+     catch(ArithmeticException e){
+        System.out.println("Warning: ArithmeticException");
+     }
+     catch(ArrayIndexOutOfBoundsException e){
+        System.out.println("Warning: ArrayIndexOutOfBoundsException");
+     }
+     catch(Exception e){
+        System.out.println("Warning: Some Other exception");
+     }
+   System.out.println("Out of try-catch block...");
+  }
+}
+Output:
+
+Warning: ArithmeticException
+Out of try-catch block...
+
+
+Examples of Try catch finally blocks
+
+Example 1: The following example demonstrate the working of finally block when no exception occurs in try block
+
+class Example1{
+  public static void main(String args[]){
+    try{
+       System.out.println("First statement of try block");
+       int num=45/3;
+       System.out.println(num);
+    }
+    catch(ArrayIndexOutOfBoundsException e){
+       System.out.println("ArrayIndexOutOfBoundsException");
+    }
+    finally{
+       System.out.println("finally block");
+    }
+    System.out.println("Out of try-catch-finally block");
+  }
+}
+Output:
+
+First statement of try block
+15
+finally block
+Out of try-catch-finally block
+
+
+    Example 2: This example shows the working of finally block when an exception occurs in try block but is not handled in the catch block:
+
+class Example2{
+   public static void main(String args[]){
+     try{
+        System.out.println("First statement of try block");
+        int num=45/0;
+        System.out.println(num);
+     }
+     catch(ArrayIndexOutOfBoundsException e){
+        System.out.println("ArrayIndexOutOfBoundsException");
+     }
+     finally{
+        System.out.println("finally block");
+     }
+     System.out.println("Out of try-catch-finally block");
+   }
+}
+Output:
+
+First statement of try block
+finally block
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+at beginnersbook.com.Example2.main(Details.java:6)
+As you can see that the system generated exception message is shown but before that the finally block successfully executed.
+
+Example 3: When exception occurs in try block and handled properly in catch block
+
+class Example3{
+   public static void main(String args[]){
+      try{
+         System.out.println("First statement of try block");
+         int num=45/0;
+         System.out.println(num);
+      }
+      catch(ArithmeticException e){
+         System.out.println("ArithmeticException");
+      }
+      finally{
+         System.out.println("finally block");
+      }
+      System.out.println("Out of try-catch-finally block");
+   }
+}
+Output:
+
+First statement of try block
+ArithmeticException
+finally block
+Out of try-catch-finally block
+
+
