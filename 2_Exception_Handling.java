@@ -177,3 +177,89 @@ finally block
 Out of try-catch-finally block
 
 
+***************************************************************************************************************************************
+
+How to throw exception in java
+
+Example of throw keyword
+Lets say we have a requirement where we we need to only register the students when their age is less than 12 and weight is less than 40, 
+if any of the condition is not met then the user should get an ArithmeticException with the warning message “Student is not eligible for registration”.
+
+    /* In this program we are checking the Student age
+ * if the student age<12 and weight <40 then our program 
+ * should return that the student is not eligible for registration.
+ */
+public class ThrowExample {
+   static void checkEligibilty(int stuage, int stuweight){ 
+      if(stuage<12 && stuweight<40) {
+         throw new ArithmeticException("Student is not eligible for registration"); 
+      }
+      else {
+         System.out.println("Student Entry is Valid!!"); 
+      }
+   } 
+
+   public static void main(String args[]){ 
+     System.out.println("Welcome to the Registration process!!");
+     checkEligibilty(10, 39); 
+     System.out.println("Have a nice day.."); 
+ } 
+}
+Output:
+
+Welcome to the Registration process!!Exception in thread "main" 
+java.lang.ArithmeticException: Student is not eligible for registration
+at beginnersbook.com.ThrowExample.checkEligibilty(ThrowExample.java:9)
+at beginnersbook.com.ThrowExample.main(ThrowExample.java:18)
+
+
+NOTE: 
+> Why did we use `throw new ArithmeticException(...)` instead of just printing a message with `System.out.println()`?
+
+We use `throw` to **stop the program execution** and signal that an **error has occurred**, which allows proper **error handling**.
+
+## 📌 Explanation with Difference:
+
+### ✅ `System.out.println()`
+
+Just **prints a message** — the program **continues to run**.
+
+Example:
+
+```java
+if (age < 12) {
+    System.out.println("Not eligible");
+}
+// Program still runs normally afterward
+```
+
+### ❌ Problem:
+
+* The program keeps running even after an invalid condition.
+* You may get **wrong results or behavior**.
+
+---
+
+### ✅ `throw new ArithmeticException(...)`
+
+It **throws a runtime exception**, which:
+
+* Immediately **stops the method** execution.
+* **Jumps out** of the method (and stack).
+* Gives a **clear error trace** for debugging.
+* Can be caught using `try-catch` if needed.
+
+if (age < 12) {
+    throw new ArithmeticException("Not eligible");
+}
+// Program stops here unless caught
+
+## ✅ **Real-Life Analogy:**
+
+| `System.out.println()` | Just gives a warning.                                                 |
+| ---------------------- | --------------------------------------------------------------------- |
+| `throw`                | Like pulling the emergency brake 🚨 — it stops everything right away. |
+
+
+> "`throw` is used to raise an exception intentionally. It gives better control over program flow and proper error handling, while `System.out.println()` is only for displaying messages."
+
