@@ -265,3 +265,66 @@ if (age < 12) {
 
 *****************************************************************************************************************************************
 
+throws Keyword in Java- 
+The throws keyword is used in method signatures to declare exceptions that the method might propagate (but not handle).
+It shifts the responsibility of handling exceptions to the caller method.
+
+Here's a **simple non-file example** using `throws` with a custom exception:
+
+### **Age Validator Example**
+```java
+// Custom Exception
+class InvalidAgeException extends Exception {
+    InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+class AgeValidator {
+    // Method declares it throws our custom exception
+    public static void checkAge(int age) throws InvalidAgeException {
+        if (age < 18) {
+            throw new InvalidAgeException("Age must be 18+");
+        }
+        System.out.println("Age validated!");
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(15); // This will throw exception
+        } 
+        catch (InvalidAgeException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+```
+
+**Output:**
+```
+Error: Age must be 18+
+```
+
+### **Key Breakdown:**
+1. **Custom Exception**  
+   - We created `InvalidAgeException` to represent our specific error case.
+
+2. **`throws` Declaration**  
+   - `checkAge()` warns callers it might throw this exception.
+
+3. **Caller Handling**  
+   - `main()` must handle the exception with try-catch.
+
+4. **Business Logic**  
+   - Simple age validation instead of file operations.
+
+******************************************************************************************************************************************
+
+Exception propagation: Inside a method if an exception raised and if you are not handling that exception then exception object will be
+                       propagated to caller then caller method is responsible to handle exception. This is call Exception propagation.
+    
+How Exception Propagation Works
+When an exception occurs in a method, Java first checks if the method has a try-catch block to handle it.
+If not, the exception is propagated to the calling method.
+This continues up the call stack until a matching catch block is found or the program crashes.
+    
