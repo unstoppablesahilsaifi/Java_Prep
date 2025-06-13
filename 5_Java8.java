@@ -59,3 +59,71 @@ public class Main {
 * Much **shorter** and **more readable** than the version without lambda.
 
 
+### **Example: Lambda Expression with No Parameter**
+
+```java
+// Functional Interface
+interface Message {
+    void say();
+}
+
+// Main Class
+public class Main {
+    public static void main(String[] args) {
+        // Lambda with no parameter
+        Message msg = () -> System.out.println("Hello from Lambda!");
+
+        // Calling the method
+        msg.say();
+    }
+}
+
+
+### **Output:**
+
+Hello from Lambda!
+
+### **Explanation:**
+* The interface `Message` has a method `say()` with **no parameters**.
+* The lambda `() -> System.out.println("Hello from Lambda!")` implements that method.
+* No need for an anonymous class — it's short and clean.
+
+Example 2: Java Lambda Expression with single parameter
+@FunctionalInterface
+interface MyFunctionalInterface {
+
+	//A method with single parameter
+    public int incrementByFive(int a);
+}
+public class Example {
+
+   public static void main(String args[]) {
+        // lambda expression with single parameter num
+    	MyFunctionalInterface f = (num) -> num+5;
+        System.out.println(f.incrementByFive(22));
+    }
+}
+Output:
+27
+
+=> Example: Lambda Expression with Multiple Parameters
+// Functional Interface
+interface Addable {
+    int add(int a, int b);
+}
+
+// Main Class
+public class Main {
+    public static void main(String[] args) {
+        // Lambda with multiple parameters
+        Addable addition = (a, b) -> a + b;
+
+        // Calling the method
+        System.out.println("Sum: " + addition.add(10, 20));
+    }
+}
+Output:
+
+Sum: 30
+
+  
