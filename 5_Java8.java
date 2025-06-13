@@ -126,4 +126,67 @@ Output:
 
 Sum: 30
 
-  
+*************************************************************************************************************************************
+
+// Method References
+A method reference is a shorthand notation of a lambda expression to call a method by referring to it directly with :: (double colon operator).
+
+str -> System.out.println(str)
+then you can replace it with a method reference like this:
+System.out::println
+
+**************************************************************************************************************************************
+### **1. Default Method in Interface**
+
+**Definition:**
+A **default method** is a method in an interface that has a **body** (implementation) and uses the `default` keyword. It was introduced in **Java 8** to allow interfaces to evolve without breaking existing code.
+### ✅ **Example: Default Method**
+interface MyInterface {
+    default void show() {
+        System.out.println("This is a default method.");
+    }
+}
+
+class MyClass implements MyInterface {
+    // No need to override the default method unless you want to
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.show();  // Output: This is a default method.
+    }
+}
+
+### **2. Static Method in Interface**
+
+**Definition:**
+A **static method** in an interface also has a body, but it **belongs to the interface itself**, not to the implementing class. It can be called using the interface name.
+
+### ✅ **Example: Static Method**
+interface MyInterface {
+    static void display() {
+        System.out.println("This is a static method.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyInterface.display();  // Output: This is a static method.
+    }
+}
+
+
+### ✅ **Key Differences:**
+
+| Feature            | Default Method                 | Static Method    |
+| ------------------ | ------------------------------ | ---------------- |
+| Introduced In      | Java 8                         | Java 8           |
+| Belongs To         | Instance of implementing class | Interface itself |
+| Called By          | Object of implementing class   | Interface name   |
+| Can Be Overridden? | Yes                            | No               |
+
+***************************************************************************************************************************************
+
+
+
