@@ -235,3 +235,20 @@ All the classes and interfaces related to Java collections are kept in java.util
 ---
 
 Let me know if you’d like this exported as a text file or markdown file.
+
+
+*************************************************************************************************************************************
+
+### **Synchronized**
+
+* Only one thread can access the collection at a time.
+* It is **thread-safe**.
+* Slower performance due to locking.
+* Use it in **multi-threaded environments**.
+
+### **Not Synchronized**
+
+* Multiple threads can access it at the same time.
+* **Not thread-safe**.
+* Faster performance.
+* Use it in **single-threaded environments** or if you manage synchronization yourself.
