@@ -1,15 +1,18 @@
-No problem, Sahil! Let's break down Generics in the simplest and shortest way possible, like you’re explaining it to a friend.
 🔹 What are Generics?
 Generics = "Specify the type"
+    
 It makes your code type-safe and avoids casting.
+    
 🔸 Without Generics:
 ArrayList list = new ArrayList();
 list.add("Sahil");
 String name = (String) list.get(0); // ❌ Need casting
+
 🔸 With Generics:
 ArrayList<String> list = new ArrayList<>();
 list.add("Sahil");
 String name = list.get(0); // ✅ No casting needed
+
 🔹 Real-Life Analogy:
 Imagine a box that can hold anything:
 class Box {
@@ -44,6 +47,7 @@ class Demo {
 Usage:
 new Demo().print("Hello");
 new Demo().print(123);
+
 Great! Let’s go through some real and simple examples to understand Generics better. We’ll cover:
 Generic Class
 Generic Method
