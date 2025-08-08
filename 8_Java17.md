@@ -1,34 +1,26 @@
-Java 17 — LTS Release (Sept 2021) Interview Notes
+## 🚀 Java 17 — LTS Release (Sept 2021) Interview Notes
 
+---
 
-1. Sealed Classes & Interfaces (JEP 409)
+## 1. 🔒 Sealed Classes & Interfaces (JEP 409)
 
 Purpose: Restrict kaun subclass/inherit kar sakta hai.
 
+```java
 public sealed class Vehicle permits Car, Truck {}
 public final class Car extends Vehicle {}
 public non-sealed class Truck extends Vehicle {}
+````
 
-* sealed: Restricts inheritance.
-* permits: Allowed subclasses ka list.
-* Subclasses must be final, sealed, or non-sealed.
+* **sealed:** Restricts inheritance.
+* **permits:** Allowed subclasses ka list.
+* Subclasses must be **final**, **sealed**, or **non-sealed**.
 
-💡 Interview tip: API design me unwanted inheritance roknay ke liye.
+💡 **Interview tip:** API design me unwanted inheritance roknay ke liye.
 
+---
 
-
-
-
-
-
-
-
-
-
-
-    
-
-2. Pattern Matching for instanceof (JEP 394)
+## 2. 🧩 Pattern Matching for instanceof (JEP 394)
 
 ```java
 if (obj instanceof String s) {
@@ -38,8 +30,6 @@ if (obj instanceof String s) {
 
 * Auto-casting, extra variable declaration.
 * Cleaner & safer type checks.
-
-
 
 ### **Purana tareeka (Java 16 se pehle)**
 
@@ -57,31 +47,19 @@ Yaani **do step**:
 1. `instanceof` se check.
 2. Alag se `(String)` cast.
 
-
-Java 17 ka naya tareeka
+### **Java 17 ka naya tareeka**
 
 Ab `instanceof` ke saath hi **variable ban jaata hai**:
 
-
+```java
 if (obj instanceof String s) {
     System.out.println(s.toUpperCase()); // direct use
 }
+```
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-## **3. Records (JEP 395)**
+## 3. 📜 Records (JEP 395)
 
 Immutable data carrier classes:
 
@@ -94,8 +72,6 @@ public record Person(String name, int age) {}
 
 💡 *Interview tip:* DTOs, immutable data transfer objects.
 
-
-  
 ---
 
 ### **Purana tareeka (Java 16 se pehle)**
@@ -160,14 +136,7 @@ Bas itna likho, aur:
 
 ---
 
-
-
-
-
-
-    
-
-## **4. Switch Expressions (JEP 361)**
+## 4. 🔄 Switch Expressions (JEP 361)
 
 ```java
 int num = switch (day) {
@@ -182,7 +151,7 @@ int num = switch (day) {
 
 ---
 
-## **5. Text Blocks (JEP 378)**
+## 5. 📄 Text Blocks (JEP 378)
 
 ```java
 String json = """
@@ -196,7 +165,6 @@ String json = """
 * Multi-line strings with `"""`.
 * Auto-formats indentation.
 * Great for JSON, SQL, HTML.
-
 
 ---
 
@@ -250,12 +218,9 @@ String json = """
 * Agar extra spaces ya indentation remove karna ho → common whitespace automatically strip hota hai.
 * Triple quotes close karte waqt **same level indentation** rakhna zaruri hai.
 
+---
 
-
-
-    
-
-## **6. New Random Number Generator API (JEP 356)**
+## 6. 🎲 New Random Number Generator API (JEP 356)
 
 ```java
 RandomGenerator rng = RandomGenerator.of("L64X128MixRandom");
@@ -311,18 +276,16 @@ int num = rng.nextInt(100);
 * `RandomGenerator` me `nextInt()`, `nextLong()`, `nextDouble()` jaise methods hain.
 * Future me cryptographic-quality RNGs add karna easy hoga.
 
-
-
 ---
 
-## **7. Strong Encapsulation of JDK Internals (JEP 403)**
+## 7. 🔐 Strong Encapsulation of JDK Internals (JEP 403)
 
 * `sun.*` internal APIs hidden by default.
 * Reflection se access difficult without `--add-opens`.
 
 ---
 
-## **8. Deprecations & Removals**
+## 8. ⚠ Deprecations & Removals
 
 * **Applet API** removed.
 * **Security Manager** deprecated (JEP 411).
@@ -330,7 +293,7 @@ int num = rng.nextInt(100);
 
 ---
 
-## **9. Garbage Collection Updates**
+## 9. ♻️ Garbage Collection Updates
 
 * **G1 GC** = default.
 * **ZGC** & **Shenandoah** → low-latency options.
@@ -338,9 +301,12 @@ int num = rng.nextInt(100);
 
 ---
 
-## **10. LTS Significance**
+## 10. 🏆 LTS Significance
 
 * LTS = **Long Term Support** → production ready till at least 2029.
 * Stable choice for enterprise apps.
 
+---
+
+```
 
