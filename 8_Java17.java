@@ -17,7 +17,7 @@ public non-sealed class Truck extends Vehicle {}
 
 
 
-## **2. Pattern Matching for `instanceof` (JEP 394)**
+2. Pattern Matching for instanceof (JEP 394)
 
 ```java
 if (obj instanceof String s) {
