@@ -267,6 +267,54 @@ int num = rng.nextInt(100);
 
 ---
 
+### **Purana tareeka (Random Class)**
+
+Random number generate karne ke liye hum `java.util.Random` class use karte the:
+
+```java
+Random rand = new Random();
+int num = rand.nextInt(100);
+```
+
+⚠ Problem →
+
+* Limited algorithms.
+* Predictability issues in some cases.
+
+---
+
+### **Java 17 ka naya tareeka (RandomGenerator Interface)**
+
+Ab Java 17 me **ek naya unified API** aya hai jisme alag-alag random algorithms available hain:
+
+```java
+RandomGenerator rng = RandomGenerator.of("L64X128MixRandom");
+int num = rng.nextInt(100);
+```
+
+* `RandomGenerator` interface new hai.
+* `RandomGenerator.of(String algorithmName)` se specific algorithm choose kar sakte ho.
+* Algorithms me high-quality, better randomness wale options hote hain.
+
+---
+
+💡 **Fayda:**
+
+* Flexible random number generation.
+* Better randomness and performance.
+* Easily switch kar sakte ho algorithms.
+
+---
+
+⚠ **Extra:**
+
+* `RandomGenerator` me `nextInt()`, `nextLong()`, `nextDouble()` jaise methods hain.
+* Future me cryptographic-quality RNGs add karna easy hoga.
+
+
+
+---
+
 ## **7. Strong Encapsulation of JDK Internals (JEP 403)**
 
 * `sun.*` internal APIs hidden by default.
