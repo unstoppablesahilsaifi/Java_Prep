@@ -94,7 +94,78 @@ public record Person(String name, int age) {}
 
 💡 *Interview tip:* DTOs, immutable data transfer objects.
 
+
+  
 ---
+
+### **Purana tareeka (Java 16 se pehle)**
+
+Agar hume ek class banana hai sirf **data store karne ke liye** (jaise DTO), to hume **bohot boilerplate code** likhna padta tha:
+
+```java
+public class Person {
+    private final String name;
+    private final int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() { return name; }
+    public int getAge() { return age; }
+
+    @Override
+    public boolean equals(Object o) { ... }
+    @Override
+    public int hashCode() { ... }
+    @Override
+    public String toString() { ... }
+}
+```
+
+⚠ Problem → Sirf data hold karne ke liye itna code likhna time waste.
+
+---
+
+### **Java 17 ka naya tareeka**
+
+Ab aap `record` keyword use karo:
+
+```java
+public record Person(String name, int age) {}
+```
+
+Bas itna likho, aur:
+
+* Constructor ban jaata hai.
+* Getters ban jaate hain (`name()`, `age()`).
+* `equals()`, `hashCode()`, `toString()` auto-generate.
+* Immutable hoti hai (fields `final`).
+
+---
+
+💡 **Fayda:**
+
+* **Boilerplate 90% kam**.
+* Immutable data holder — safe for multithreading.
+* Clean, readable, and concise.
+
+---
+
+⚠ **Limitation:**
+
+* `record` **extend** nahi hota (final hota hai).
+* Sirf data store karne ke liye bana, heavy business logic ke liye nahi.
+
+---
+
+
+
+
+
+
+    
 
 ## **4. Switch Expressions (JEP 361)**
 
@@ -126,7 +197,63 @@ String json = """
 * Auto-formats indentation.
 * Great for JSON, SQL, HTML.
 
+
 ---
+
+### **Purana tareeka (Multi-line String)**
+
+Agar hume multi-line string likhni hoti thi (JSON, HTML, SQL), to har line me quotes + `\n` dalna padta tha:
+
+```java
+String json = "{\n" +
+              "  \"name\": \"Sahil\",\n" +
+              "  \"role\": \"Java Dev\"\n" +
+              "}";
+```
+
+⚠ Problem →
+
+* Code ugly lagta tha.
+* Indentation handle karna mushkil.
+
+---
+
+### **Java 17 ka naya tareeka (Text Blocks)**
+
+Ab `"""` triple quotes ka use karke multi-line string easily likh sakte ho:
+
+```java
+String json = """
+    {
+        "name": "Sahil",
+        "role": "Java Dev"
+    }
+    """;
+```
+
+* Formatting same jaise likha waise hi print hota hai.
+* No `+` concatenation, no `\n` needed.
+* Indentation automatically adjust hota hai.
+
+---
+
+💡 **Fayda:**
+
+* Clean, readable code.
+* Perfect for JSON, HTML, SQL queries.
+* Indentation control easily.
+
+---
+
+⚠ **Extra Tip:**
+
+* Agar extra spaces ya indentation remove karna ho → common whitespace automatically strip hota hai.
+* Triple quotes close karte waqt **same level indentation** rakhna zaruri hai.
+
+
+
+
+    
 
 ## **6. New Random Number Generator API (JEP 356)**
 
@@ -168,22 +295,4 @@ int num = rng.nextInt(100);
 * LTS = **Long Term Support** → production ready till at least 2029.
 * Stable choice for enterprise apps.
 
----
 
-### **One-Line Revision Table**
-
-| Feature            | Keyword / API         | Why Important               |
-| ------------------ | --------------------- | --------------------------- |
-| Sealed Classes     | `sealed`, `permits`   | Controlled inheritance      |
-| Pattern Matching   | `instanceof Type var` | No manual cast              |
-| Records            | `record`              | Less boilerplate, immutable |
-| Switch Expressions | `->` in switch        | Shorter, return values      |
-| Text Blocks        | `"""`                 | Clean multi-line strings    |
-| RNG API            | `RandomGenerator`     | Multiple algorithms         |
-| Encapsulation      | Hide internals        | Secure & stable             |
-| Deprecations       | Applet, SecManager    | Legacy cleanup              |
-
----
-
-Agar aap chaho to main isko **ek hi A4 page ka “Java 17 Interview Sheet”** bana ke de sakta hoon PDF form me — taaki kal bas print karke ya phone pe zoom karke revise kar lo.
-Kya main ab wo bana du?
