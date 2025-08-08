@@ -17,6 +17,17 @@ public non-sealed class Truck extends Vehicle {}
 
 
 
+
+
+
+
+
+
+
+
+
+    
+
 2. Pattern Matching for instanceof (JEP 394)
 
 ```java
@@ -28,7 +39,47 @@ if (obj instanceof String s) {
 * Auto-casting, extra variable declaration.
 * Cleaner & safer type checks.
 
----
+
+
+### **Purana tareeka (Java 16 se pehle)**
+
+Agar hume check karna ho ki `obj` String hai ya nahi, to pehle **type check** karte the, fir **cast** karna padta tha:
+
+```java
+if (obj instanceof String) {
+    String s = (String) obj; // alag se cast
+    System.out.println(s.toUpperCase());
+}
+```
+
+Yaani **do step**:
+
+1. `instanceof` se check.
+2. Alag se `(String)` cast.
+
+
+Java 17 ka naya tareeka
+
+Ab `instanceof` ke saath hi **variable ban jaata hai**:
+
+
+if (obj instanceof String s) {
+    System.out.println(s.toUpperCase()); // direct use
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## **3. Records (JEP 395)**
 
