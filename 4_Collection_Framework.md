@@ -187,3 +187,48 @@ Using Java collection framework, you can store the objects as a **List**, **Set*
 - Use in single-threaded environments or manage sync yourself.
 
 ---
+
+
+# 📚 Java Collections Framework – Master Table
+
+This table summarizes **all major Java Collection Framework types and their popular implementations** with properties like **null handling, duplicates, ordering, synchronization, performance, and use cases**.
+
+---
+
+| Main Type | Subtype / Implementation | Null Allowed? | Duplicates? | Order Maintained? | Synchronization | Avg Performance (Insert / Remove / Retrieve) | Best Use Case |
+|-----------|--------------------------|---------------|-------------|-------------------|-----------------|-----------------------------------------------|--------------|
+| **List**  | ArrayList                | ✅ Multiple   | ✅ Yes      | ✅ Insertion Order| ❌ No           | O(1)/O(1)/O(1) (O(n) if resize)                | Frequent search, less insert/remove |
+|           | Vector                   | ✅ Multiple   | ✅ Yes      | ✅ Insertion Order| ✅ Yes          | Slightly slower than ArrayList (sync)         | Need thread-safe list |
+|           | LinkedList               | ✅ Multiple   | ✅ Yes      | ✅ Insertion Order| ❌ No           | O(1)/O(1)/O(n)                                | Frequent insert/remove |
+| **Set**   | HashSet                  | ✅ 1 null     | ❌ No       | ❌ No Order       | ❌ No           | O(1)/O(1)/O(1)                                | Unique elements, no order |
+|           | LinkedHashSet            | ✅ 1 null     | ❌ No       | ✅ Insertion Order| ❌ No           | O(1)/O(1)/O(1)                                | Unique + preserve insertion order |
+|           | TreeSet                  | ❌ No null    | ❌ No       | ✅ Sorted Order   | ❌ No           | O(log n)/O(log n)/O(log n)                    | Unique + sorted elements |
+| **Queue** | PriorityQueue            | ❌ No null    | ✅ Yes      | ✅ Comparator/Natural| ❌ No       | O(log n)/O(log n)/O(1)                        | Elements in priority order |
+|           | ArrayDeque               | ❌ No null    | ✅ Yes      | ✅ FIFO/LIFO     | ❌ No           | O(1)/O(1)/O(1)                                | Queue or stack replacement |
+| **Map**   | HashMap                  | ✅ 1 null key, many null values | ✅ Values only | ❌ No Order | ❌ No | O(1)/O(1)/O(1) | Key-value, fast lookup |
+|           | LinkedHashMap            | ✅ 1 null key, many null values | ✅ Values only | ✅ Insertion Order | ❌ No | O(1)/O(1)/O(1) | Key-value, insertion order |
+|           | TreeMap                  | ❌ No null key, many null values | ✅ Values only | ✅ Sorted by Key | ❌ No | O(log n)/O(log n)/O(log n) | Key-value, sorted by key |
+
+---
+
+## 🔹 Notes
+- **Null Allowed?** → Refers to keys (for Map) or elements (for Collection).
+- **Duplicates?** → Refers to element duplication in Collection or value duplication in Map.
+- **Order Maintained?** → Whether insertion order or sorted order is preserved.
+- **Synchronization** → Only Vector is synchronized by default; others need `Collections.synchronizedXXX()` wrapper or concurrent variants.
+- **Performance** → Average-case time complexity; may vary based on resizing, collisions, or balancing.
+
+---
+
+## 🔹 Quick Tips for Interviews
+- Use **ArrayList** when reads/searches dominate.
+- Use **LinkedList** when insertions/removals dominate.
+- Use **HashSet** for fastest unique storage.
+- Use **LinkedHashSet** when unique elements but need order.
+- Use **TreeSet** when unique elements and sorted order needed.
+- Use **HashMap** for key-value with best performance.
+- Use **LinkedHashMap** when order of insertion matters in key-value pairs.
+- Use **TreeMap** when sorted keys are required.
+
+---
+
